@@ -1,4 +1,4 @@
-import threekitHelper from "../../util/threekit";
+import threekitHelper from "../../utils/threekit";
 
 import actions from "./types";
 

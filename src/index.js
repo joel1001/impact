@@ -4,7 +4,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { configureStore } from "./app/redux/store";
 import ReactDOM from "react-dom";
 import App from "./app/containers/App/index.js";
-
+import "./index.css";
+import Navbar from "./app/layout/navbar";
 
 
 // const store = configureStore();

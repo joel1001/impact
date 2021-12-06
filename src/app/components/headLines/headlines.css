@@ -1,0 +1,19 @@
+.idc-headlines{
+    width: 100%;
+}
+.idc-headlines .idc-description-box{
+    width: 41%;
+    margin-bottom: 20px;
+}
+.idc-headlines .idc-description-box .idc-description{
+    width: 100%;
+    color: #545454;
+    font-family: "Open Sans";
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    line-height: 22px;
+}
+.idc-headlines .idc-availability{
+    font-weight: bold;
+    margin-bottom: 34px;
+}

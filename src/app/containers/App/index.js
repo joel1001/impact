@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Threekit from "../../components/Threekit";
-
+import ThreekitMain from "../../page/threekitMain";
 
 const App = (props) => {
 
     return (
-        <Threekit />
+        <ThreekitMain></ThreekitMain>
     );
 };
 

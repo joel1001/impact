@@ -1,0 +1,58 @@
+
+import React from "react";
+import "./tabNavbar.css";
+import { threekitConfiguration } from "../../utils/activateCssClass";
+
+const TabNavbar = (props) => {
+   const {tabHeaders, tabDefaultActive, tabIndividualTemplateType, tabsContent, onElementClick, tabColorsNames, tabContentDefaultActive, tabMosaicImages} = props;
+   return(
+    <div className="idc-tab-nav">
+       <div className="idc-tab-headers">
+         {
+            tabHeaders && tabHeaders.map((header, index)=>{
+               return(
+                  <div key={index} className="idc-tab-nav-content">                  
+                     <div onClick={() => {onElementClick(index, '', '', ".idc-tab-headers-section", "idc-tab-active", "headers", ".idc-tab-content-box", "idc-visible-content")}} className={`idc-tab-headers-section ${tabDefaultActive == index ? " idc-tab-active" : ""}`}>{header}</div>
+                     <div className={`idc-template-${tabIndividualTemplateType[index]} idc-tab-content`}>
+                     </div>
+                  </div>
+               )   
+            })
+         }
+      </div>
+      <div className="idc-tab-cointains">
+         {
+            tabsContent.map( (content, a) => (
+               tabIndividualTemplateType[a] == 'color-palette' ? 
+                  <div className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""}`}>
+                     {
+                        content.map((color, b) => {
+                           return (
+                              <div key={b} className={`idc-tab-color ${tabContentDefaultActive == b ? "idc-option-active" : ""}`} onClick={() =>  {onElementClick(b, "Color", tabColorsNames[b], ".idc-tab-color", "idc-option-active", "content")}} style={{backgroundColor: color}}></div>
+                           )
+                        })
+                     } 
+                  </div>
+               :
+               <div className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""} idc-non-color`} style={tabIndividualTemplateType[a] == "mosaic" ? {width:"90%", justifyContent:"space-around"} : null}>
+                  {
+                     content.map((content, c) => {
+                        return(
+                           tabIndividualTemplateType[a] == "mosaic" ? 
+                           <div onClick={() =>  {onElementClick(c, "mosaic", tabsContent[c], ".idc-mosaic-elemnts", "idc-option-active", "content")}} className={`idc-mosaic-elemnts ${tabContentDefaultActive == c ? "idc-option-active" : ""}`} style={{width: (100/tabMosaicImages.length + 10) + "%"}}>
+                              <img src={tabMosaicImages[c]}/>
+                              <div key={c} className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`}>{content}</div>
+                           </div>
+                           :
+                           <div key={c} className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`} onClick={() =>  {onElementClick(c, "Size", tabsContent[c], `.idc-tab-${tabIndividualTemplateType[a]}`, "idc-option-active-non-color", "content")}}>{content}</div>
+                        )
+                     })
+                  }
+               </div>
+            ))
+         }
+      </div>
+    </div>
+   )
+}
+export default TabNavbar;  
