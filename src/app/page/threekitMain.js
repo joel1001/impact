@@ -1,7 +1,7 @@
 import React from "react";
 import "./threekitMain.css";
 import Navbar from "../layout/navbar";
-import Player from "../components/Threekit/player";
+import Player from "../components/Threekit/Player";
 
 const ThreekitMain = () => {
 

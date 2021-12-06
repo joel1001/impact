@@ -88,7 +88,7 @@ const Player = (props) => {
                   description={ window.crate ? window.crate.metadata.productDescription : ""}
                   sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
                   startsQty={starsQty()}
-                  reviewsQty={window.crate ? window.crate.metadata.starsQty : 0}
+                  reviewsQty={`${window.crate ? window.crate.metadata.starsQty : 0}  reviews`}
               />
               <TabNavbar
                   tabHeaders={window.crate ? Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))) : []}
@@ -108,7 +108,10 @@ const Player = (props) => {
               />
             </div>
           :
-          <div className="loader"></div>
+          <div>
+                <div className="idc-loader"></div>
+                <div className="idc-loading-text">Loading Impact 3D experince...</div>
+          </div>
         }
       </div>
     </div>

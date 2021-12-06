@@ -58,7 +58,7 @@
 .idc-stars{
     margin-bottom: 37px;
 }
-.loader {
+.idc-loader {
     animation:spin 1s infinite linear;
     border:solid 2vmin transparent;
     border-radius:50%;
@@ -72,7 +72,7 @@
     width:20vmin;
     z-index:1;
 }
-.loader:before {
+.idc-loader:before {
     animation:spin 2s infinite linear;
     border:solid 2vmin transparent;
     border-radius:50%;
@@ -86,7 +86,7 @@
     top:0;
     width:16vmin;
 }
-.loader:after {
+.idc-loader:after {
     animation:spin 3s infinite linear;
     border:solid 2vmin transparent;
     border-radius:50%;
@@ -106,3 +106,12 @@
       transform:rotate(360deg);
     }
   }
+.idc-loading-text{
+    height: 20vmin;
+    left: calc(46% - 10vmin);
+    position: fixed;
+    top: calc(75% - 10vmin);
+    width: 65vmin;
+    z-index: 1;
+
+}

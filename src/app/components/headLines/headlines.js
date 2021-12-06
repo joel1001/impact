@@ -3,7 +3,6 @@ import "./headlines.css";
 
 const Headlines = (props) => {
    const { title, price, description, sizesAvailbale, startsQty, reviewsQty } = props;
-
    return(
     <div className="idc-headlines">
        <div className="idc-info">
