@@ -66,6 +66,7 @@
     box-sizing: border-box;
     border: 1px solid #000000;
     background-color: #333E48;
+    color: #FFF;
 }
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap{
     box-sizing: border-box;
