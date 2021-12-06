@@ -90,8 +90,8 @@
     animation:spin 3s infinite linear;
     border:solid 2vmin transparent;
     border-radius:50%;
-    border-right-color:#fff;
-    border-top-color:#fff;
+    border-right-color:#52c41a;
+    border-top-color:#52c41a;
     box-sizing:border-box;
     content:"";
     height:12vmin;

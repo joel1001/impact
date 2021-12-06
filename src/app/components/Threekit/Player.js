@@ -84,7 +84,7 @@ const Player = (props) => {
             <div className="idc-col-2 idc-right-col">
               <Headlines 
                   title={ window.crate ? window.crate.metadata.title : ""}
-                  price={ window.crate ? window.crate.metadata.basePrice + " $" : ""}
+                  price={ window.crate ? "$ " + window.crate.metadata.basePrice.toFixed(2) : ""}
                   description={ window.crate ? window.crate.metadata.productDescription : ""}
                   sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
                   startsQty={starsQty()}
@@ -100,7 +100,12 @@ const Player = (props) => {
                   tabContentDefaultActive = {0}
                   tabMosaicImages={[aluminium, blackAluminium, blackPlastic, turquoisePlastic]}
               />
-              <Footers/>
+              <Footers
+                // footerMessage={}
+                // addButton={}
+                // buttonText={}
+                // buttonDo={}
+              />
             </div>
           :
           <div className="loader"></div>
