@@ -32,3 +32,8 @@ body {
   width: 100%;
   justify-content: space-between;
 }
+@media(max-width: 620px){
+  .idc-threekit-main .idc-content-wrapper .idc-col-2{
+    width: 100%;
+  }
+}

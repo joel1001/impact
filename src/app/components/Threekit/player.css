@@ -113,5 +113,9 @@
     top: calc(75% - 10vmin);
     width: 65vmin;
     z-index: 1;
-
+}
+@media(max-width: 620px){
+    .idc-threekit-main .idc-content-wrapper{
+        flex-wrap: wrap;
+    }
 }

@@ -30,6 +30,16 @@ const Player = (props) => {
     }
     return starsArray
   }
+  function content(){
+    let tabsContent = [];
+    tabsContent =  
+    [   
+        window.crate.metadata.tabOneContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabOneContent.replace(/\\/g, ""))) : [],  
+        window.crate.metadata.tabTwoContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabTwoContent.replace(/\\/g, ""))) : [], 
+        window.crate.metadata.tabThreeContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, ""))) : []
+    ]
+    return tabsContent
+  }
   const state = useSelector((store) => {
     return {
       Meta: store.Meta,
@@ -94,7 +104,7 @@ const Player = (props) => {
                   tabHeaders={window.crate ? Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))) : []}
                   tabDefaultActive={0}
                   tabIndividualTemplateType={["color-palette", "overlap", "mosaic"]}
-                  tabsContent={window.crate ? [Object.values(JSON.parse(window.crate.metadata.tabOneContent.replace(/\\/g, ""))),  Object.values(JSON.parse(window.crate.metadata.tabTwoContent.replace(/\\/g, ""))), Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, "")))] : []}
+                  tabsContent={window.crate ? content() : []}
                   onElementClick={classesActiveOrInactive}
                   tabColorsNames={window.crate ? Object.values(JSON.parse(window.crate.metadata.colorsName.replace(/\\/g, ""))) : []}
                   tabContentDefaultActive = {0}

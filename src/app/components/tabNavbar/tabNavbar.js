@@ -21,8 +21,9 @@ const TabNavbar = (props) => {
          }
       </div>
       <div className="idc-tab-cointains">
+         {console.log("tabsContent", tabsContent)}
          {
-            tabsContent.map( (content, a) => (
+           tabsContent.map( (content, a) => (
                tabIndividualTemplateType[a] == 'color-palette' ? 
                   <div className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""}`}>
                      {
@@ -35,6 +36,7 @@ const TabNavbar = (props) => {
                   </div>
                :
                <div className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""} idc-non-color`} style={tabIndividualTemplateType[a] == "mosaic" ? {width:"90%", justifyContent:"space-around"} : null}>
+                  {console.log('content', content)}
                   {
                      content.map((content, c) => {
                         return(
