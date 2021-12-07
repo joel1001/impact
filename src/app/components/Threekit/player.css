@@ -123,4 +123,7 @@
         top: calc(65% - 10vmin);
         width: 80vmin;
     }
+    #player{
+        height: 340px;
+    }
 }
