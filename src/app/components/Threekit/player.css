@@ -118,4 +118,9 @@
     .idc-threekit-main .idc-content-wrapper{
         flex-wrap: wrap;
     }
+    .idc-loading-text{
+        left: calc(25% - 10vmin);
+        top: calc(65% - 10vmin);
+        width: 80vmin;
+    }
 }
