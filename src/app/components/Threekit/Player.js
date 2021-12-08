@@ -79,7 +79,7 @@ const Player = (props) => {
         <span className="idc-red-font">{setInterval(() => timeIntervalForShiiping(""),1000)}</span>
       and your order is
         <span className="idc-green-font">{" Guaranteed "}</span>
-      to ship in 3-7 business days. ALL other colors will ship in 10-15 business days.
+      {`to ship in ${window.crate.metadata.shipIn} business days. ALL other colors will ship in ${window.crate.metadata.allOtherShipping} business days.`}
     </div> : ""
     ]
     return colorDefaultPrice;
