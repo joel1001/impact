@@ -1,0 +1,69 @@
+.idc-footers{
+    display: flex;
+}
+.idc-footers .idc-services-box{
+    display: flex;
+    margin-right: 20%;
+}
+.idc-footers .idc-services-box .idc-pay-once{
+    background: #9AD1DC;
+    box-shadow: 0px 8px 11px #D6D7D9;
+    border-radius: 2px;
+    width: 106px;
+    height: 94px;
+    border-radius: 0.5px solid #AAA;
+    font-family: "Bebas Neue";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 28px;
+}
+.idc-footers .idc-services-box .idc-pay-once .idc-pay-once-text{
+    
+}
+.idc-footers .idc-services-box .idc-affirm{
+    width: 106px;
+    height: 94px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.idc-footers .idc-services-box .idc-affirm img{
+    width: 75px;
+    height: 30px;
+}
+.idc-footers .idc-services-box .idc-affirm .idc-affirm-financings-text{
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 18px;
+}
+.idc-footers .idc-primary-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+.idc-footers .idc-primary-buttons .idc-button{
+    width: 193px; 
+    border: 0.5px solid #000;
+    height: 55px;
+    background-color: #FFAD48;
+    font-family: "Bebas Neue";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}

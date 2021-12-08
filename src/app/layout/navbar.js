@@ -1,4 +1,4 @@
-import impactLogo from "../../assets/images/impact_logo.jpg";
+import impactLogo from "../../assets/images/impact_logo.png";
 import "./navbar.css"
 
 const Navbar = () => {

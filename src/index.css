@@ -28,9 +28,23 @@ body {
   height: 100%;
   flex-direction: column;
 }
-.idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
+.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box{
   width: 100%;
   justify-content: space-between;
+}
+.idc-tab-nav{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+span.idc-red-font{
+  color: #FF0000
+}
+span.idc-green-font{
+  color: #1cda17
+}
+.idc-visible{
+  display: flex !important;
 }
 @media(max-width: 620px){
   .idc-threekit-main .idc-content-wrapper .idc-col-2{
