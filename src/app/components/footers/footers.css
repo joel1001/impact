@@ -111,4 +111,11 @@
     .idc-footers .idc-primary-buttons .idc-button.idc-buttons-visible{
         width: 193px;
     }
+    @media (min-width: 140px) and (max-width: 241px) {
+        .idc-footers{
+            margin-top: 145px;
+            flex-wrap: wrap;
+        }
+    }
+    
 }
