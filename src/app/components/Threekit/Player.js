@@ -142,8 +142,8 @@ const Player = (props) => {
       descriptionTextAndIcons =
       <div className="idc-description-and-start">
         <div className='idc-stars'>
-         {starsQty() + " reviews"}
-         <span className="idc-reviews">{window.crate.metadata.starsQty ? window.crate.metadata.starsQty : 0}</span> 
+         {starsQty()}
+         <span className="idc-reviews">{window.crate.metadata.starsQty ? window.crate.metadata.starsQty + " reviews" : 0}</span> 
        </div>
         <div className="idc-description-text">{window.crate.metadata.productDescription ? window.crate.metadata.productDescription : ""}</div>
       </div>
