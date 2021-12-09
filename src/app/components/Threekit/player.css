@@ -7,6 +7,8 @@
     height: max-content;
 }
 .idc-threekit-main .idc-content-wrapper{
+    position: relative;
+    top: 115px;
     background-color: #fff;
     height: max-content;
     display: flex;
@@ -125,12 +127,14 @@
     }
     #player{
         height: 275px;
+        position: fixed;
+        left: 2%;
+        top: 100px;
+        overflow: hidden;
+        width: 96%;
     }
     .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info{
         flex-wrap: wrap;
         margin: 25px 0;
-    }
-    .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info .idc-title{
-        line-height: 5px;
     }
 }

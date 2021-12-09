@@ -108,4 +108,7 @@
     .idc-footers .idc-services-box .idc-pay-once{
         margin-right: 0;
     }
+    .idc-footers .idc-primary-buttons .idc-button.idc-buttons-visible{
+        width: 193px;
+    }
 }
