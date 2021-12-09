@@ -1,0 +1,23 @@
+import React from "react";
+import "./threekitMain.css";
+import Navbar from "../layout/navbar";
+import Player from "../components/Threekit/Player";
+
+const ThreekitMain = () => {
+
+    return(
+        <div className="idc-main">
+            <Navbar></Navbar>
+            <Player
+                assetId="6a800142-1c09-470e-af61-875e6c984e79"
+            /> 
+        </div>
+        
+    )
+
+}
+export default ThreekitMain;
+
+Explain component functionality
+Here we have the main view call we have the impact lay out navbar and the threekit component call
+the "assetId" parameter is the one in the URL of the threekit catalog --> https://preview.threekit.com/o/impactdogcrates/items/6a800142-1c09-470e-af61-875e6c984e79
