@@ -23,7 +23,7 @@ const TabNavbar = (props) => {
          {
            tabsContent.map((content, a) => (
                tabIndividualTemplateType[a] == 'color-palette' ? 
-                  <div className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""}`}>
+                  <div key={a} className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""}`}>
                      {console.log("tabsContent", tabsContent)}
 
                      {
@@ -40,9 +40,9 @@ const TabNavbar = (props) => {
                      content.map((content, c) => {
                         return(
                            tabIndividualTemplateType[a] == "mosaic" ? 
-                           <div onClick={() =>  {onElementClick(c, "mosaic", tabsContent[c], ".idc-mosaic-elemnts", "idc-option-active")}} className={`idc-mosaic-elemnts ${tabContentDefaultActive == c ? "idc-option-active" : ""}`} style={{width: (100/tabMosaicImages.length + 10) + "%"}}>
+                           <div key={c} onClick={() =>  {onElementClick(c, "mosaic", tabsContent[c], ".idc-mosaic-elemnts", "idc-option-active")}} className={`idc-mosaic-elemnts ${tabContentDefaultActive == c ? "idc-option-active" : ""}`} style={{width: (100/tabMosaicImages.length + 10) + "%"}}>
                               <img src={tabMosaicImages[c]}/>
-                              <div key={c} className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`}>{content}</div>
+                              <div className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`}>{content}</div>
                            </div>
                            :
                            <div key={c} className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`} onClick={() =>  {onElementClick(c, "Size", tabsContent[c], `.idc-tab-${tabIndividualTemplateType[a]}`, "idc-option-active-non-color")}}>{content}</div>
@@ -60,11 +60,11 @@ const TabNavbar = (props) => {
                Array.isArray(info) ? 
                   info.map((description, e) => {
                      return(
-                        <div className={`idc-product-info ${tabContentDefaultActive == d && description? "idc-product-info-visible" : ""}`} key={e}>{description}</div>
+                        <div key={e} className={`idc-product-info ${tabContentDefaultActive == d && description? "idc-product-info-visible" : ""}`}>{description}</div>
                      )
                   })
                :
-               <div className={`idc-product-info ${info ? "idc-visible" : ""}`} key={d}>{info}</div>
+               <div key={d} className={`idc-product-info ${info ? "idc-visible" : ""}`}>{info}</div>
             ))
          }
       </div>
