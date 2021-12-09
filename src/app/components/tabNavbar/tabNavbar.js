@@ -11,7 +11,7 @@ const TabNavbar = (props) => {
             tabHeaders && tabHeaders.map((header, index)=>{
                return(
                   <div key={index} className="idc-tab-nav-content">                  
-                     <div onClick={() => {onElementClick(index, '', '', ".idc-tab-headers-section", "idc-tab-active", ".idc-tab-content-box", "idc-visible-content", ".idc-product-info", "idc-product-info-visible")}} className={`idc-tab-headers-section ${tabDefaultActive == index ? " idc-tab-active" : ""}`}>{header}</div>
+                     <div onClick={() => {onElementClick(index, '', '', ".idc-tab-headers-section", "idc-tab-active", ".idc-tab-content-box", "idc-visible-content", ".idc-product-info", "idc-product-info-visible", ".idc-button", "idc-buttons-visible")}} className={`idc-tab-headers-section ${tabDefaultActive == index ? " idc-tab-active" : ""}`}>{header}</div>
                      <div className={`idc-template-${tabIndividualTemplateType[index]} idc-tab-content`}>
                      </div>
                   </div>

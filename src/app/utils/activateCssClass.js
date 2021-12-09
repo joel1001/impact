@@ -1,16 +1,19 @@
 import { setConfigurations } from "./setConfiguration";
-export function classesActiveOrInactive(indexToActivate, attribute, value, classGroup, classToactivate, classContentGroup, classContentToActivate, footerClassGroup, footerClassToativate){
+export function classesActiveOrInactive(indexToActivate, attribute, value, classGroup, classToactivate, classContentGroup, classContentToActivate, footerClassGroup, footerClassToativate, buttonsGroup, buttonToActivate){
     const tabs = document.querySelectorAll(classGroup);
     const containTabs = document.querySelectorAll(classContentGroup);
     const footerContains = document.querySelectorAll(footerClassGroup);
+    const buttonsContains = document.querySelectorAll(buttonsGroup);
     for(let a = 0; a < tabs.length; a++){
         tabs[a].classList.remove(classToactivate);
         containTabs[a] && containTabs[a].classList.remove(classContentToActivate);
         footerContains[a] && footerContains[a].classList.remove(footerClassToativate);
+        buttonsContains[a] && buttonsContains[a].classList.remove(buttonToActivate);
         if(indexToActivate == a){
             tabs[a].classList.add(classToactivate);
             containTabs[a] && containTabs[a].classList.add(classContentToActivate);
             footerContains[a] && footerContains[a].classList.add(footerClassToativate);
+            buttonsContains[a] && buttonsContains[a].classList.add(buttonToActivate);
         }
     }
     entirePageChangePriceAmount(attribute, value)

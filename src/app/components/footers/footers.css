@@ -3,7 +3,7 @@
 }
 .idc-footers .idc-services-box{
     display: flex;
-    margin-right: 20%;
+    margin-right: 24%;
 }
 .idc-footers .idc-services-box .idc-pay-once{
     background: #9AD1DC;
@@ -60,10 +60,13 @@
     font-family: "Bebas Neue";
     font-weight: 400;
     font-style: normal;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 12px; 
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    cursor: pointer;
+}
+.idc-footers .idc-primary-buttons .idc-button.idc-buttons-visible{
+    display: flex;
 }

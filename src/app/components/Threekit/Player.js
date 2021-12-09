@@ -85,11 +85,10 @@ const Player = (props) => {
     return colorDefaultPrice;
   }
 
-  function addToCart(){
-
+  function addToCart() {
   }
-  function callClassesActiveOrInactive (a) {
-    classesActiveOrInactive(a, '', '', ".idc-tab-headers-section", "idc-tab-active", " .idc-tab-content-box", "idc-visible-content")
+  function allClassesActiveOrInactive (a) {
+    classesActiveOrInactive(a, '', '', ".idc-tab-headers-section", "idc-tab-active", " .idc-tab-content-box", "idc-visible-content", ".idc-product-info", "idc-product-info-visible", ".idc-button", "idc-buttons-visible")
   }
 
   function buttonsText (buttonsQty){
@@ -105,12 +104,13 @@ const Player = (props) => {
   }
 
   function buttonsDo (buttonsQty){
-    let arrayOfFooterButtonsDo = [];
+    let arrayOfFooterButtonsDo = [{}];
     for(let a = 0; a < buttonsQty; a++){
+      arrayOfFooterButtonsDo[a] = {"do": function(){}}
       if((buttonsQty - 1) == a){
-        arrayOfFooterButtonsDo[a] = () => {addToCart()};
+        arrayOfFooterButtonsDo[a].do = addToCart;
       }else{
-        arrayOfFooterButtonsDo[a] = () => {callClassesActiveOrInactive(a)};
+        arrayOfFooterButtonsDo[a].do = allClassesActiveOrInactive;
       }
     }
     return arrayOfFooterButtonsDo;
@@ -207,6 +207,7 @@ const Player = (props) => {
                   infoAndDescriptionsPerTab={window.crate ? infoAndDescriptionsPerTab() : ["", ""]}
               />
               <Footers
+                tabDefaultActive={tabDefaultActive}
                 iconsAndServices={createServicesBox()}
                 buttonText={window.crate ? buttonsText(Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))).length) : buttonsText(0)}
                 buttonsDo={window.crate ? buttonsDo(Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))).length) : buttonsDo(0)}

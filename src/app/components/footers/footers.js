@@ -2,7 +2,7 @@ import React from "react";
 import "./footers.css";
 
 const Footers = (props) => {
-   const { iconsAndServices, buttonText, buttonsDo } = props;
+   const { tabDefaultActive, iconsAndServices, buttonText, buttonsDo } = props;
    return(
     <div className="idc-footers">
       {iconsAndServices} 
@@ -10,7 +10,7 @@ const Footers = (props) => {
             {
                buttonText.map((text, a) => {
                   return(
-                     <div key={a} onclick={buttonsDo[a]} className="idc-button">
+                     <div key={a} onClick={() => (buttonsDo[a].do(a + 1))} className={`idc-button ${tabDefaultActive == a ? "idc-buttons-visible" : ""}`}>
                         {text}
                      </div>
                   )
