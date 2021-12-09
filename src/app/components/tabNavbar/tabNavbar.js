@@ -60,11 +60,11 @@ const TabNavbar = (props) => {
                Array.isArray(info) ? 
                   info.map((description, e) => {
                      return(
-                        <div className={`idc-product-info ${tabContentDefaultActive == d ? "idc-product-info-visible" : ""}`} key={e}>{description}</div>
+                        <div className={`idc-product-info ${tabContentDefaultActive == d && description? "idc-product-info-visible" : ""}`} key={e}>{description}</div>
                      )
                   })
                :
-               <div className="idc-product-info idc-visible" key={d}>{info}</div>
+               <div className={`idc-product-info ${info ? "idc-visible" : ""}`} key={d}>{info}</div>
             ))
          }
       </div>

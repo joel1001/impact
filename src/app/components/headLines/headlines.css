@@ -2,16 +2,52 @@
     width: 100%;
 }
 .idc-headlines .idc-description-box{
-    width: 41%;
+    display: flex;
+    width: 100%;
     margin-bottom: 20px;
 }
 .idc-headlines .idc-description-box .idc-description{
-    width: 100%;
     color: #545454;
     font-family: "Open Sans";
     font-size: 15px;
     letter-spacing: -0.2px;
     line-height: 22px;
+    cursor: pointer;
+}
+.idc-headlines .idc-description-box .idc-description .idc-description-gifts{
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 11px #D6D7D9;
+    border-radius: 2px;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.idc-headlines .idc-description-box .idc-description .idc-description-gifts .idc-description-gifts-image{
+    display: flex;
+    justify-content: center;
+}
+.idc-headlines .idc-description-box .idc-description .idc-description-gifts .idc-description-gifts-info .idc-description-title{
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #FFAD48;
+}
+.idc-headlines .idc-description-box .idc-description .idc-description-gifts .idc-description-gifts-info .idc-description-description{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 15px;
+}
+.idc-headlines .idc-description-box .idc-description .idc-description-gifts .idc-description-gifts-info{
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    margin-left: 5px;
 }
 .idc-headlines .idc-availability{
     font-weight: bold;

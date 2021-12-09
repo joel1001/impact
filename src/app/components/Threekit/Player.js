@@ -10,11 +10,8 @@ import TabNavbar from "../tabNavbar/tabNavbar";
 import Footers from "../footers/footers";
 import { StarFilled, WindowsFilled } from "@ant-design/icons";
 import { classesActiveOrInactive } from "../../utils/activateCssClass";
-import aluminium from "../../../assets/images/aluminium.jpg";
-import blackAluminium from "../../../assets/images/black_aluminium.jpg";
-import blackPlastic from "../../../assets/images/black_plastic.jpg";
-import turquoisePlastic from "../../../assets/images/turquoise_plastic.jpg";
 import Affirm from "../../../assets/images/affirm.svg";
+import vinyl from "../../../assets/images/vinyl.png";
 
 const Player = (props) => {
   const { assetId } = props;
@@ -69,7 +66,7 @@ const Player = (props) => {
     window.crate.metadata.colorPrices  && Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] !== "$ 0" ? 
     <span className="idc-price-addition"> {"$ " + Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] + " extra charge for this color selection."} </span>
     :
-    "";
+    null;
     colorDefaultPrice = 
     [[overPriceText], 
 
@@ -80,7 +77,7 @@ const Player = (props) => {
       and your order is
         <span className="idc-green-font">{" Guaranteed "}</span>
       {`to ship in ${window.crate.metadata.shipIn ? window.crate.metadata.shipIn : ""} business days. ALL other colors will ship in ${window.crate.metadata.allOtherShipping ? window.crate.metadata.allOtherShipping : ""} business days.`}
-    </div> : ""
+    </div> : null
     ]
     return colorDefaultPrice;
   }
@@ -133,6 +130,45 @@ const Player = (props) => {
         </div>
       </div>
     )    
+  }
+
+  function headerDescriptions(){
+    let membership = window.crate.metadata.membership ? window.crate.metadata.membership : "";
+    if(membership == "premium"){
+      let arrayOfDescriptions = [];
+      let descriptionElements;
+      let descriptionTextAndIcons;
+
+      descriptionTextAndIcons =
+      <div className="idc-description-and-start">
+        <div className='idc-stars'>
+         {starsQty()}
+         <span className="idc-reviews">{window.crate.metadata.starsQty ? window.crate.metadata.starsQty : 0}</span> 
+       </div>
+        <div className="idc-description-text">{window.crate.metadata.productDescription ? window.crate.metadata.productDescription : ""}</div>
+      </div>
+
+      descriptionElements = window.crate.metadata.premiumGift && window.crate.metadata.premiumGift > 0 ?
+        <div className="idc-description-gifts">
+          <div className="idc-description-gifts-image">
+            <img src={vinyl}/>
+          </div>
+          <div className="idc-description-gifts-info">
+            <div className="idc-description-title">FREE PREMIUM GIFTS</div>
+            <div className="idc-description-description">Vynil PAd</div>
+            <div className="idc-description-description">{`- $ ${window.crate.metadata.premiumGift} (Low Inventory)`}</div>
+          </div>
+        </div>
+      :
+        null
+
+      arrayOfDescriptions[0] = descriptionTextAndIcons;
+      arrayOfDescriptions[1] = descriptionElements;
+      return arrayOfDescriptions
+    }
+    else {
+      return []
+    }
   }
 
   const state = useSelector((store) => {
@@ -190,10 +226,8 @@ const Player = (props) => {
               <Headlines 
                   title={ window.crate ? window.crate.metadata.title : ""}
                   price={ initialPrice }
-                  description={ window.crate ? window.crate.metadata.productDescription : ""}
+                  descriptions={ window.crate ? headerDescriptions() : []}
                   sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
-                  startsQty={starsQty()}
-                  reviewsQty={`${window.crate ? window.crate.metadata.starsQty : 0}  reviews`}
               />
               <TabNavbar
                   tabHeaders={window.crate ? Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))) : []}
@@ -203,7 +237,7 @@ const Player = (props) => {
                   onElementClick={classesActiveOrInactive}
                   tabColorsNames={window.crate ? Object.values(JSON.parse(window.crate.metadata.colorsName.replace(/\\/g, ""))) : []}
                   tabContentDefaultActive = {tabContentDefaultActive}
-                  tabMosaicImages={[aluminium, blackAluminium, blackPlastic, turquoisePlastic]}
+                  //tabMosaicImages={[aluminium, blackAluminium, blackPlastic, turquoisePlastic]}
                   infoAndDescriptionsPerTab={window.crate ? infoAndDescriptionsPerTab() : ["", ""]}
               />
               <Footers
