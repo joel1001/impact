@@ -25,7 +25,7 @@
     margin-right: 28px;
 }
 .idc-footers .idc-services-box .idc-pay-once .idc-pay-once-text{
-    
+    cursor: pointer;
 }
 .idc-footers .idc-services-box .idc-affirm{
     width: 106px;
@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
 }
 .idc-footers .idc-services-box .idc-affirm img{
     width: 75px;
