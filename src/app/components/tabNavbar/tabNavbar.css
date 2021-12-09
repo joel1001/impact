@@ -132,7 +132,7 @@
     line-height: 32px;
     letter-spacing: -0.3px;
 }
-@media(max-width: 620px){
+@media(max-width: 1265px){
     .idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-overlap{
         width: 100%;
         margin-right: 0;
@@ -143,4 +143,14 @@
     .idc-tab-nav .idc-tab-cointains{
         width: 100%;
     }
-  }
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
+        flex-wrap: wrap;
+    }
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color{
+        margin-bottom: 15px;
+        margin-right: 10px;
+    }
+    .idc-tab-nav .idc-tabs-footer .idc-product-info span{
+        margin-bottom: 20px;
+    }
+}

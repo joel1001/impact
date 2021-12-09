@@ -46,7 +46,7 @@ span.idc-green-font{
 .idc-visible{
   display: flex !important;
 }
-@media(max-width: 620px){
+@media(max-width: 1265px){
   .idc-threekit-main .idc-content-wrapper .idc-col-2{
     width: 100%;
   }

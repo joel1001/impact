@@ -114,7 +114,7 @@
     width: 65vmin;
     z-index: 1;
 }
-@media(max-width: 620px){
+@media(max-width: 1265px){
     .idc-threekit-main .idc-content-wrapper{
         flex-wrap: wrap;
     }
@@ -125,5 +125,12 @@
     }
     #player{
         height: 275px;
+    }
+    .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info{
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+    .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info .idc-title{
+        line-height: 5px;
     }
 }

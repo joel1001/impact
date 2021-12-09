@@ -53,3 +53,15 @@
     font-weight: bold;
     margin-bottom: 34px;
 }
+@media(max-width: 1265px){
+    .idc-headlines .idc-description-box{
+        flex-wrap: wrap;
+        height: max-content;
+    }
+    .idc-headlines .idc-description-box .idc-description{
+        width: 100% !important;
+    }
+    .idc-headlines .idc-description-box .idc-description .idc-description-gifts{
+        margin-left: 0;
+    }
+}
