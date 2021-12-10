@@ -1,9 +1,33 @@
 
 import React from "react";
 import "./tabNavbar.css";
+import PropTypes from 'prop-types'; 
 
 const TabNavbar = (props) => {
-   const {tabHeaders, tabDefaultActive, tabIndividualTemplateType, tabsContent, onElementClick, tabColorsNames, tabContentDefaultActive, tabMosaicImages, infoAndDescriptionsPerTab} = props;
+   let error = false;
+   let {tabHeaders, tabDefaultActive, tabIndividualTemplateType, tabsContent, onElementClick, tabColorsNames, tabContentDefaultActive, tabMosaicImages, infoAndDescriptionsPerTab} = props;
+   if(tabHeaders.length !== tabsContent.length){
+      console.log("WARNING!!: the number of tab headers does not correspond content of tab headers that you are sending, " + tabHeaders.length + " tab headers and then you just send: " + tabsContent.length + " content" + (tabsContent.length > 1 ? "s" : ""));
+   }
+   if(tabDefaultActive > tabHeaders.length || tabDefaultActive < 0){
+      console.log("WARNING!!: can not set default tab header, couse does not exist tab header " + tabDefaultActive + " if you just have " + tabHeaders.length + " tab headers");
+      tabDefaultActive = 0
+   }
+   if(tabContentDefaultActive > tabsContent[tabDefaultActive].length || tabContentDefaultActive < 0){
+      console.log("WARNING!!: can not set default tab content, couse does not exist tab content " + tabContentDefaultActive + " if you just have " + tabsContent[tabDefaultActive].length + " tab content");
+      tabContentDefaultActive = 0
+   }
+   if(tabColorsNames.length > tabsContent[tabContentDefaultActive].length){
+      console.log("WARNING!!: the quantity of color names " + tabColorsNames.length + " is not corresponding with the quantity colors " + tabsContent[tabContentDefaultActive].length + " in the tab content")
+   }
+   if(tabIndividualTemplateType){
+      for(let a = 0; a < tabIndividualTemplateType.length; a++){
+         if(tabIndividualTemplateType[a] !== 'color-palette' && tabIndividualTemplateType[a] !== 'overlap' && tabIndividualTemplateType[a] !== 'mosaic'){
+            console.log("WARNING!!: " + tabIndividualTemplateType[a] + " is an unknown template for this component, make sure to send whatever of this templates, templates supported: color-palette, overlap and mosaic.");
+            tabIndividualTemplateType[a] = "overlap";
+         }
+      }
+   }
    return(
     <div className="idc-tab-nav">
        <div className="idc-tab-headers">
@@ -24,8 +48,6 @@ const TabNavbar = (props) => {
            tabsContent.map((content, a) => (
                tabIndividualTemplateType[a] == 'color-palette' ? 
                   <div key={a} className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""}`}>
-                     {console.log("tabsContent", tabsContent)}
-
                      {
                         content.map((color, b) => {
                            return (
@@ -71,4 +93,10 @@ const TabNavbar = (props) => {
     </div>
    )
 }
-export default TabNavbar;  
+export default TabNavbar;
+
+TabNavbar.propTypes = {
+   onElementClick: PropTypes.func,
+   infoAndDescriptionsPerTab: PropTypes.instanceOf(Element),
+   tabMosaicImages: PropTypes.array
+}
