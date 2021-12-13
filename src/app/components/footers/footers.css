@@ -74,7 +74,7 @@
 
 @media(max-width: 1265px){
     .idc-footers{
-        margin-top: 1%S;
+        margin-top: 15px;
         flex-wrap: wrap;
     }
     .idc-footers .idc-primary-buttons .idc-button{
@@ -110,12 +110,6 @@
     }
     .idc-footers .idc-primary-buttons .idc-button.idc-buttons-visible{
         width: 193px;
-    }
-}
-@media (min-width: 140px) and (max-width: 352px) {
-    .idc-footers{
-        margin-top: 180px;
-        flex-wrap: wrap;
     }
 }
 @media (min-width: 140px) and (max-width: 352px) {
