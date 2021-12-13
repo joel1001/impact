@@ -2,28 +2,32 @@
 import React from "react";
 import "./tabNavbar.css";
 import PropTypes from 'prop-types'; 
+import { hasUncaughtExceptionCaptureCallback } from "process";
 
 const TabNavbar = (props) => {
-   let error = false;
-   let {tabHeaders, tabDefaultActive, tabIndividualTemplateType, tabsContent, onElementClick, tabColorsNames, tabContentDefaultActive, tabMosaicImages, infoAndDescriptionsPerTab} = props;
+   let {tabHeaders, tabDefaultActive, tabIndividualTemplateType, tabsContent, onElementClick, tabColorsNames, tabContentDefaultActive, tabItemsDefaultActive, tabMosaicImages, infoAndDescriptionsPerTab, attributes} = props;
    if(tabHeaders.length !== tabsContent.length){
-      console.log("WARNING!!: the number of tab headers does not correspond content of tab headers that you are sending, " + tabHeaders.length + " tab headers and then you just send: " + tabsContent.length + " content" + (tabsContent.length > 1 ? "s" : ""));
+      console.warn("TabNabvar Component WARNING!!: the number of tab headers does not correspond content of tab headers that you are sending, " + tabHeaders.length + " tab headers and then you just send: " + tabsContent.length + " content" + (tabsContent.length > 1 ? "s" : ""));
    }
    if(tabDefaultActive > tabHeaders.length || tabDefaultActive < 0){
-      console.log("WARNING!!: can not set default tab header, couse does not exist tab header " + tabDefaultActive + " if you just have " + tabHeaders.length + " tab headers");
+      console.warn("TabNabvar Component WARNING!!: can not set default tab header, couse does not exist tab header " + tabDefaultActive + " if you just have " + tabHeaders.length + " tab headers");
       tabDefaultActive = 0
    }
-   if(tabContentDefaultActive > tabsContent[tabDefaultActive].length || tabContentDefaultActive < 0){
-      console.log("WARNING!!: can not set default tab content, couse does not exist tab content " + tabContentDefaultActive + " if you just have " + tabsContent[tabDefaultActive].length + " tab content");
+   if(tabItemsDefaultActive > tabsContent[tabDefaultActive].length || tabItemsDefaultActive < 0){
+      console.warn("TabNabvar Component WARNING!!: can not set default tab content, couse does not exist tab content " + tabItemsDefaultActive + " if you just have " + tabsContent[tabDefaultActive].length + " tab content");
+      tabItemsDefaultActive = 0
+   }
+   if(tabContentDefaultActive > tabsContent.length || tabContentDefaultActive < 0){
+      console.warn("TabNabvar Component WARNING!!: can not set default tab content, couse does not exist tab content " + tabContentDefaultActive + " if you just have " + tabsContent.length + " tab content");
       tabContentDefaultActive = 0
    }
-   if(tabColorsNames.length > tabsContent[tabContentDefaultActive].length){
-      console.log("WARNING!!: the quantity of color names " + tabColorsNames.length + " is not corresponding with the quantity colors " + tabsContent[tabContentDefaultActive].length + " in the tab content")
+   if(tabsContent[tabContentDefaultActive] && tabColorsNames.length >  tabsContent[tabContentDefaultActive].length){
+      console.warn("TabNabvar Component WARNING!!: the quantity of color names " + tabColorsNames.length + " is not corresponding with the quantity colors " + tabsContent[tabContentDefaultActive].length + " in the tab content")
    }
    if(tabIndividualTemplateType){
       for(let a = 0; a < tabIndividualTemplateType.length; a++){
          if(tabIndividualTemplateType[a] !== 'color-palette' && tabIndividualTemplateType[a] !== 'overlap' && tabIndividualTemplateType[a] !== 'mosaic'){
-            console.log("WARNING!!: " + tabIndividualTemplateType[a] + " is an unknown template for this component, make sure to send whatever of this templates, templates supported: color-palette, overlap and mosaic.");
+            console.warn("TabNabvar Component WARNING!!: " + tabIndividualTemplateType[a] + " is an unknown template for this component, make sure to send whatever of this templates, templates supported: color-palette, overlap and mosaic.");
             tabIndividualTemplateType[a] = "overlap";
          }
       }
@@ -51,7 +55,7 @@ const TabNavbar = (props) => {
                      {
                         content.map((color, b) => {
                            return (
-                              <div key={b} className={`idc-tab-color ${tabContentDefaultActive == b ? "idc-option-active" : ""}`} onClick={() =>  {onElementClick(b, "Color", tabColorsNames[b], ".idc-tab-color", "idc-option-active")}} style={{backgroundColor: color}}></div>
+                              <div key={b} className={`idc-tab-color-${a} ${tabItemsDefaultActive == b ? "idc-option-active" : ""}`} onClick={() =>  {onElementClick(b, attributes[a], tabColorsNames[b], ".idc-tab-color-" + a, "idc-option-active")}} style={{backgroundColor: color}}></div>
                            )
                         })
                      } 
@@ -59,15 +63,15 @@ const TabNavbar = (props) => {
                :
                <div className={`idc-tab-content-box ${tabContentDefaultActive == a ? "idc-visible-content" : ""} idc-non-color`} style={tabIndividualTemplateType[a] == "mosaic" ? {width:"90%", justifyContent:"space-around"} : null}>
                   {
-                     content.map((content, c) => {
+                     content.map((type, c) => {
                         return(
                            tabIndividualTemplateType[a] == "mosaic" ? 
-                           <div key={c} onClick={() =>  {onElementClick(c, "mosaic", tabsContent[c], ".idc-mosaic-elemnts", "idc-option-active")}} className={`idc-mosaic-elemnts ${tabContentDefaultActive == c ? "idc-option-active" : ""}`} style={{width: (100/tabMosaicImages.length + 10) + "%"}}>
+                           <div key={c} onClick={() => {onElementClick(c, attributes[a], tabsContent[a][c], (".idc-mosaic-elemnts-" + a), "idc-option-active")}} className={`idc-mosaic-elemnts-${a} ${tabItemsDefaultActive == c ? "idc-option-active" : ""}`} style={{width: (100/tabMosaicImages.length + 10) + "%"}}>
                               <img src={tabMosaicImages[c]}/>
-                              <div className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`}>{content}</div>
+                              <div className={`idc-tab-${tabIndividualTemplateType[a]}-${a} ${tabItemsDefaultActive == c ? "idc-option-active-non-color" : ""}`}>{type}</div>
                            </div>
                            :
-                           <div key={c} className={`idc-tab-${tabIndividualTemplateType[a]} ${tabContentDefaultActive == c ? "idc-option-active-non-color" : ""}`} onClick={() =>  {onElementClick(c, "Size", tabsContent[c], `.idc-tab-${tabIndividualTemplateType[a]}`, "idc-option-active-non-color")}}>{content}</div>
+                           <div key={c} className={`idc-tab-${tabIndividualTemplateType[a]}-${a} ${tabItemsDefaultActive == c ? "idc-option-active-non-color" : ""}`} onClick={() =>  {onElementClick(c, attributes[a], tabsContent[a][c], `.idc-tab-${tabIndividualTemplateType[a]}-${a}`, "idc-option-active-non-color")}}>{type}</div>
                         )
                      })
                   }

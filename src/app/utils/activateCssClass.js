@@ -17,14 +17,15 @@ export function classesActiveOrInactive(indexToActivate, attribute, value, class
         }
     }
     entirePageChangePriceAmount(attribute, value)
-    setConfigurations(attribute, value)
 }
 
 function entirePageChangePriceAmount(attribute, value){
     if(attribute == "Color"){
-        value = value.replace(/\s/g, '');
-        document.querySelector(".idc-price-addition").innerHTML = "$ " + JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[value] + " extra charge for this color selection.";
-        document.querySelector(".idc-pricing").innerHTML = "$ " + (window.crate.metadata.basePrice + parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[value])).toFixed(2);
-        document.querySelector(".idc-pay-once-price").innerHTML = "$ " + (window.crate.metadata.basePrice + parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[value])).toFixed(2);
+        let quantity;
+        quantity = value.replace(/\s/g, '');
+        document.querySelector(".idc-price-addition").innerHTML = "$ " + JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity] + " extra charge for this color selection.";
+        document.querySelector(".idc-pricing").innerHTML = "$ " + (window.crate.metadata.basePrice + parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity])).toFixed(2);
+        document.querySelector(".idc-pay-once-price").innerHTML = "$ " + (window.crate.metadata.basePrice + parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity])).toFixed(2);
     }
+    setConfigurations(attribute, value)
 }

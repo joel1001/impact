@@ -16,8 +16,13 @@ import vinyl from "../../../assets/images/vinyl.png";
 const Player = (props) => {
   const { assetId } = props;
   const [playerConfiguration, setPlayerConfiguration] = useState(null);
-  const tabContentDefaultActive = 0;
-  const tabDefaultActive = 0;
+  let tabContentDefaultActive = 0;
+  let tabDefaultActive = 0;
+  let tabItemsDefaultActive = 0;
+  tabContentDefaultActive = tabContentDefaultActive == 0 ? 0 : tabContentDefaultActive - 1;
+  tabDefaultActive = tabDefaultActive == 0 ? 0 : tabDefaultActive - 1;
+  tabItemsDefaultActive = tabItemsDefaultActive == 0 ? 0 : tabItemsDefaultActive - 1;
+
   const initialPrice = window.crate ? "$ " + (window.crate.metadata.basePrice + parseInt(Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive])).toFixed(2) : ""
 
   function starsQty(){
@@ -38,7 +43,7 @@ const Player = (props) => {
     [   
       window.crate.metadata.tabOneContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabOneContent.replace(/\\/g, ""))) : [],  
       window.crate.metadata.tabTwoContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabTwoContent.replace(/\\/g, ""))) : [], 
-      //window.crate.metadata.tabThreeContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, ""))) : []
+      window.crate.metadata.tabThreeContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, ""))) : []
     ]
     return tabsContent
   }
@@ -232,13 +237,15 @@ const Player = (props) => {
               <TabNavbar
                   tabHeaders={window.crate ? Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))) : []}
                   tabDefaultActive={tabDefaultActive}
-                  tabIndividualTemplateType={["color-palette", "overlap", "mosaic"]}
+                  tabIndividualTemplateType={["color-palette", "overlap", "overlap"]}
+                  tabItemsDefaultActive = {tabItemsDefaultActive}
                   tabsContent={window.crate ? content() : []}
                   onElementClick={classesActiveOrInactive}
                   tabColorsNames={window.crate ? Object.values(JSON.parse(window.crate.metadata.colorsName.replace(/\\/g, ""))) : []}
                   tabContentDefaultActive = {tabContentDefaultActive}
                   //tabMosaicImages={[aluminium, blackAluminium, blackPlastic, turquoisePlastic]}
                   infoAndDescriptionsPerTab={window.crate ? infoAndDescriptionsPerTab() : ["", ""]}
+                  attributes = {["Color", "Size", "Door"]}
               />
               <Footers
                 tabDefaultActive={tabDefaultActive}

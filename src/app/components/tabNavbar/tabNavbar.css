@@ -43,7 +43,7 @@
     width: 95%;
     margin-bottom: 39px;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
     width: 100%;
     height: 100%;
     justify-content: space-between;
@@ -51,27 +51,56 @@
     align-content: flex-start;
     display: none;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box.idc-visible-content{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box.idc-visible-content{
     display: flex;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-color{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-0,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-1,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-2,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-3,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-4,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-5,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-6,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-7,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-8,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-9
+{
     width: 53px;
     height: 53px;
     box-shadow: 0 8px 11px 0 rgba(0,0,0,0.22);
     cursor: pointer;
     margin-bottom: 5px;
+
 }
  .idc-tab-content-box .idc-option-active{
     border: 5px solid #E3E3E3;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-overlap.idc-option-active-non-color{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-0.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-1.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-2.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-3.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-4.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-5.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-6.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-7.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-8.idc-option-active-non-color,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-9.idc-option-active-non-color{
     box-sizing: border-box;
     border: 1px solid #000000;
     background-color: #333E48;
     color: #FFF;
     margin-bottom: 10px;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-overlap{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-0,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-1,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-2,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-3,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-4,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-5,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-6,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-7,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-8,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-9{
     box-sizing: border-box;
     height: 45px;
     width: 186px;
@@ -80,8 +109,6 @@
     box-shadow: 0 3px 10px 0 rgba(0,0,0,0.29);
     margin-right: 10px;
     margin-bottom: 10px;
-}
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-overlap{
     width: 186px;
     height: 45px;
     color: #545454;
@@ -94,10 +121,19 @@
     align-items: center;
     justify-content: center;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box.idc-non-color{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box.idc-non-color{
     justify-content: initial;
 }
-.idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-mosaic{
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-0,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-1,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-2,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-3,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-4,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-5,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-6,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-7,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-8,
+.idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-mosaic-9{
     font-family: 'Open Sans';
     font-weight: 600; 
     font-style: normal; 
@@ -133,7 +169,16 @@
     letter-spacing: -0.3px;
 }
 @media(max-width: 1265px){
-    .idc-tab-nav .idc-tab-cointains  .idc-tab-content-box .idc-tab-overlap{
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-0,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-1,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-2,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-3,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-4,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-5,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-6,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-7,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-8,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-9{
         width: 100%;
         margin-right: 0;
     }
@@ -146,7 +191,16 @@
     .idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
         flex-wrap: wrap;
     }
-    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color{
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-0,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-1,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-2,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-3,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-4,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-5,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-6,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-7,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-8,
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-color-9{
         margin-bottom: 15px;
         margin-right: 10px;
     }

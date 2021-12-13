@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Row, Col } from "react-bootstrap";
-import Threekit_Player from "./player";
+import Threekit_Player from "./Player";
 
 const Threekit = (props) => {
   const [playerModel, setPlayerModel] = useState(null);
