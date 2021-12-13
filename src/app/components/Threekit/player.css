@@ -116,6 +116,15 @@
     width: 65vmin;
     z-index: 1;
 }
+.idc-loading-text::after{
+    content:"";
+    height:12vmin;
+    left:2vmin;
+    position:absolute;
+    top:2vmin;
+    width:12vmin;
+}
+
 @media(max-width: 1265px){
     .idc-threekit-main .idc-content-wrapper{
         flex-wrap: wrap;
