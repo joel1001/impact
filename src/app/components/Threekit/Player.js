@@ -15,7 +15,6 @@ import vinyl from "../../../assets/images/vinyl.png";
 
 const Player = (props) => {
   const { assetId } = props;
-  const [playerConfiguration, setPlayerConfiguration] = useState(null);
   let tabContentDefaultActive = 0;
   let tabDefaultActive = 0;
   let tabItemsDefaultActive = 0;
@@ -58,8 +57,8 @@ const Player = (props) => {
       if(document.querySelector("span.idc-red-font") && e == "countDown"){
         const countDownDateDays = days == 0 ? "" : " " + days + " days ";
         const countDownDateHours = days == 0 && hours == 0 ? "" : " " + hours + " hours ";
-        const countDownDateMins = days == 0 && hours && minutes == 0 ? "" : " " + minutes + " minutes ";
-        const countDownDateSeconds = days == 0 && hours && minutes && seconds == 0 ? "" : " " + seconds + " sec ";
+        const countDownDateMins = days == 0 && hours == 0 && minutes == 0 ? "" : " " + minutes + " minutes ";
+        const countDownDateSeconds = days == 0 && hours == 0 && minutes == 0 && seconds == 0 ? "" : " " + seconds + " sec ";
         document.querySelector("span.idc-red-font").innerHTML = countDownDateDays + countDownDateHours + countDownDateMins + countDownDateSeconds;
       }
       else if(e == "createElement"){
@@ -141,12 +140,8 @@ const Player = (props) => {
   }
 
   function headerDescriptions(){
-    let membership = window.crate.metadata.membership ? window.crate.metadata.membership : "";
-    if(membership == "premium"){
-      let arrayOfDescriptions = [];
-      let descriptionElements;
-      let descriptionTextAndIcons;
-
+    let descriptionTextAndIcons;
+    let arrayOfDescriptions = [];
       descriptionTextAndIcons =
       <div className="idc-description-and-start">
         <div className='idc-stars'>
@@ -155,7 +150,11 @@ const Player = (props) => {
        </div>
         <div className="idc-description-text">{window.crate.metadata.productDescription ? window.crate.metadata.productDescription : ""}</div>
       </div>
+      arrayOfDescriptions[0] = descriptionTextAndIcons;
+    let membership = window.crate.metadata.membership ? window.crate.metadata.membership : "";
 
+    if(membership == "premium"){
+      let descriptionElements;
       descriptionElements = window.crate.metadata.premiumGift && window.crate.metadata.premiumGift > 0 ?
         <div className="idc-description-gifts">
           <div className="idc-description-gifts-image">
@@ -163,20 +162,15 @@ const Player = (props) => {
           </div>
           <div className="idc-description-gifts-info">
             <div className="idc-description-title">FREE PREMIUM GIFTS</div>
-            <div className="idc-description-description">Vynil PAd</div>
+            <div className="idc-description-description">Vynil Pad</div>
             <div className="idc-description-description">{`- $ ${window.crate.metadata.premiumGift} (Low Inventory)`}</div>
           </div>
         </div>
       :
         null
-
-      arrayOfDescriptions[0] = descriptionTextAndIcons;
       arrayOfDescriptions[1] = descriptionElements;
-      return arrayOfDescriptions
     }
-    else {
-      return []
-    }
+    return arrayOfDescriptions
   }
 
   const state = useSelector((store) => {
@@ -205,7 +199,7 @@ const Player = (props) => {
         assetId: assetId,
         orgId: state.Config.threekitOrgId,
         showConfigurator: false,
-        showAR: false,
+        showAR: true,
         showLoadingThumbnail: true,
         publishStage: 'draft',
       })
@@ -259,8 +253,8 @@ const Player = (props) => {
             </div>
           :
           <div>
-                <div className="idc-loader"></div>
-                <div className="idc-loading-text">Loading Impact 3D experince...</div>
+              <div className="idc-loader"></div>
+              <div className="idc-loading-text">Loading Impact 3D experince...</div>
           </div>
         }
       </div>

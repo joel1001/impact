@@ -1,3 +1,14 @@
 .idc-main{
     height: max-content;
 }
+@media(max-width: 575px){
+    .idc-main .idc-button-crate{
+      left: 240px !important;
+    }
+}
+@media (min-width: 140px) and (max-width: 394px) {
+    .idc-main .idc-button-crate{
+        width: 75px !important;
+        font-size: 8px;
+    }
+}
