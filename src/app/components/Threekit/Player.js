@@ -47,7 +47,7 @@ const Player = (props) => {
     ]
     return tabsContent
   }
-
+  
   const timeIntervalForShiiping = (e) => {
     const today = new Date();
     const endDate = new Date(today.getFullYear() + "-" + window.crate.metadata.dateToCountDown);
@@ -55,30 +55,33 @@ const Player = (props) => {
     const hours = parseInt(Math.abs(endDate - today) / (1000 * 60 * 60) % 24);
     const minutes = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000 * 60) % 60);
     const seconds = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000) % 60); 
-      if(document.querySelector("span.idc-red-font")){
-        document.querySelector("span.idc-red-font").innerHTML = " " + days + " days " + hours + " hrs " + minutes + " min " + seconds + " sec ";
+      if(document.querySelector("span.idc-red-font") && e == "countDown"){
+        const countDownDateDays = days == 0 ? "" : " " + days + " days ";
+        const countDownDateHours = days == 0 && hours == 0 ? "" : " " + hours + " hours ";
+        const countDownDateMins = days == 0 && hours && minutes == 0 ? "" : " " + minutes + " minutes ";
+        const countDownDateSeconds = days == 0 && hours && minutes && seconds == 0 ? "" : " " + seconds + " sec ";
+        document.querySelector("span.idc-red-font").innerHTML = countDownDateDays + countDownDateHours + countDownDateMins + countDownDateSeconds;
+      }
+      else if(e == "createElement"){
+        return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? 0 : 1
       }
   }
 
   function infoAndDescriptionsPerTab () {
-    var today = new Date();
-    var endDate = new Date(today.getFullYear() + "-" + window.crate.metadata.dateToCountDown);
-    var diffMs = (endDate - today);
-    var diffDays = Math.floor(diffMs / 86400000) * 24;
-
+    let timeIsOver = timeIntervalForShiiping("createElement")
     let colorDefaultPrice = [];
     let overPriceText = 
-    window.crate.metadata.colorPrices  && Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] !== "$ 0" ? 
+    window.crate.metadata.colorPrices  && Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] !== "0" ? 
     <span className="idc-price-addition"> {"$ " + Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] + " extra charge for this color selection."} </span>
     :
-    null;
+    <span className="idc-price-addition"></span>;
     colorDefaultPrice = 
     [[overPriceText], 
 
-    window.crate.metadata.dateToCountDown && diffDays > 0 ? 
+    window.crate.metadata.dateToCountDown && timeIsOver > 0 ? 
     <div className="idc-bussines-logic-text">
       Order the color Gray in
-        <span className="idc-red-font">{setInterval(() => timeIntervalForShiiping(""),1000)}</span>
+        <span className="idc-red-font">{setInterval(() => timeIntervalForShiiping("countDown"),1000)}</span>
       and your order is
         <span className="idc-green-font">{" Guaranteed "}</span>
       {`to ship in ${window.crate.metadata.shipIn ? window.crate.metadata.shipIn : ""} business days. ALL other colors will ship in ${window.crate.metadata.allOtherShipping ? window.crate.metadata.allOtherShipping : ""} business days.`}

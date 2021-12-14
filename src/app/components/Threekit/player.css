@@ -110,7 +110,7 @@
   }
 .idc-loading-text{
     height: 20vmin;
-    left: calc(51% - 10vmin);
+    left: calc(47% - 10vmin);
     position: fixed;
     top: calc(80% - 10vmin);
     width: 65vmin;
