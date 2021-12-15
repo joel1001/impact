@@ -20,7 +20,9 @@ export function classesActiveOrInactive(indexToActivate, attribute, value, class
 }
 
 function entirePageChangePriceAmount(attribute, value){
-    let colorPrice, acumulatedColorPrice, acumulatedSizePrice = 0;
+    let colorPrice = 0;
+    let acumulatedColorPrice = 0;
+    let acumulatedSizePrice = 0;
     let sizePrice = 0;
     let textPriceAdding = "";
     let quantity;
