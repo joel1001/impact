@@ -54,24 +54,32 @@ const Player = (props) => {
     const hours = parseInt(Math.abs(endDate - today) / (1000 * 60 * 60) % 24);
     const minutes = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000 * 60) % 60);
     const seconds = parseInt(Math.abs(endDate.getTime() - today.getTime()) / (1000) % 60); 
-      if(document.querySelector("span.idc-red-font") && e == "countDown"){
+      if(days >= 0 && document.querySelector("span.idc-red-font") && e == "countDown"){
         const countDownDateDays = days == 0 ? "" : " " + days + " days ";
-        const countDownDateHours = days == 0 && hours == 0 ? "" : " " + hours + " hours ";
-        const countDownDateMins = days == 0 && hours == 0 && minutes == 0 ? "" : " " + minutes + " minutes ";
-        const countDownDateSeconds = days == 0 && hours == 0 && minutes == 0 && seconds == 0 ? "" : " " + seconds + " sec ";
+        const countDownDateHours = days == 0 && hours <= 0 ? "" : " " + hours + " hours ";
+        const countDownDateMins = days == 0 && hours <= 0 && minutes <= 0 ? "" : " " + minutes + " minutes ";
+        const countDownDateSeconds = days == 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? "" : " " + seconds + " sec ";
         document.querySelector("span.idc-red-font").innerHTML = countDownDateDays + countDownDateHours + countDownDateMins + countDownDateSeconds;
       }
       else if(e == "createElement"){
-        return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? 0 : 1
+        return days >= 0 ? 1 : 0;
       }
   }
 
   function infoAndDescriptionsPerTab () {
     let timeIsOver = timeIntervalForShiiping("createElement")
     let colorDefaultPrice = [];
+    let sizesPrice = window.crate.metadata.sizesPrice && Object.values(JSON.parse(window.crate.metadata.sizesPrice.replace(/\\/g, "")))[tabContentDefaultActive] !== "0" ? 
+      parseInt(Object.values(JSON.parse(window.crate.metadata.sizesPrice.replace(/\\/g, "")))[tabContentDefaultActive]) 
+      :
+      0;
+    let colorPrices = window.crate.metadata.colorPrices && Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] !== "0" ? 
+      parseInt(Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive]) 
+      :
+      0;
     let overPriceText = 
-    window.crate.metadata.colorPrices  && Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] !== "0" ? 
-    <span className="idc-price-addition"> {"$ " + Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] + " extra charge for this color selection."} </span>
+    window.crate.metadata.colorPrices && colorPrices || sizesPrice? 
+    <span className="idc-price-addition"> {"$ " + (sizesPrice + colorPrices) + " extra charge for this color selection."} </span>
     :
     <span className="idc-price-addition"></span>;
     colorDefaultPrice = 

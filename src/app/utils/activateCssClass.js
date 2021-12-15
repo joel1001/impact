@@ -20,12 +20,30 @@ export function classesActiveOrInactive(indexToActivate, attribute, value, class
 }
 
 function entirePageChangePriceAmount(attribute, value){
+    let colorPrice, acumulatedColorPrice, acumulatedSizePrice = 0;
+    let sizePrice = 0;
+    let textPriceAdding = "";
+    let quantity;
+    quantity = value.replace(/\s/g, '');
     if(attribute == "Color"){
-        let quantity;
-        quantity = value.replace(/\s/g, '');
-        document.querySelector(".idc-price-addition").innerHTML = "$ " + JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity] + " extra charge for this color selection.";
-        document.querySelector(".idc-pricing").innerHTML = "$ " + (window.crate.metadata.basePrice + parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity])).toFixed(2);
-        document.querySelector(".idc-pay-once-price").innerHTML = "$ " + (window.crate.metadata.basePrice + parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity])).toFixed(2);
+        colorPrice = parseInt(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, ""))[quantity]);
+        textPriceAdding = "color";
+        sessionStorage.setItem("priceAmountColor", colorPrice);
+    }
+    else if(attribute == "Size"){
+        quantity = value.includes("tall") ? value.slice(0, 2) + "LW" : value.slice(0, 2);
+        sizePrice = parseInt(JSON.parse(window.crate.metadata.sizesPrice.replace(/\\/g, ""))[quantity]);
+        textPriceAdding = "size";
+        sessionStorage.setItem("priceAmountSize", sizePrice);
+    }
+    acumulatedColorPrice = parseInt(sessionStorage.getItem("priceAmountColor"));
+    acumulatedSizePrice = parseInt(sessionStorage.getItem("priceAmountSize"));
+
+    if(attribute == "Color" || attribute == "Size"){
+        document.querySelector(".idc-product-info").style.display = "flex";
+        document.querySelector(".idc-price-addition").innerHTML = "$ " +  (colorPrice + sizePrice) + " extra charge for this " + textPriceAdding + " selection.";
+        document.querySelector(".idc-pricing").innerHTML = "$ " + (window.crate.metadata.basePrice + (acumulatedColorPrice + acumulatedSizePrice)).toFixed(2);
+        document.querySelector(".idc-pay-once-price").innerHTML = "$ " + + (window.crate.metadata.basePrice + (acumulatedColorPrice + acumulatedSizePrice)).toFixed(2);
     }
     setConfigurations(attribute, value)
 }
