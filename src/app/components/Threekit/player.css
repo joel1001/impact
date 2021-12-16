@@ -141,10 +141,34 @@
         position: fixed;
         top: 100px;
         overflow: hidden;
-        width: 93%;
+        width: 90%;
+        z-index: 2;
     }
     .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info{
         flex-wrap: wrap;
         margin: 25px 0;
+    }
+    .idc-threekit-main .idc-content-wrapper{
+        top: 0;
+    }
+}
+@media (min-width: 524px) and (max-width: 788px) {
+    #player{
+        width: 85%;
+    }
+}
+@media (min-width: 393px) and (max-width: 523px) {
+    #player{
+        width: 80%;
+    }
+}
+@media (min-width: 315px) and (max-width: 392px) {
+    #player{
+        width: 75%;
+    }
+}
+@media (min-width: 140px) and (max-width: 314px) {
+    #player{
+        width: 70%;
     }
 }

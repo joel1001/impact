@@ -161,23 +161,23 @@ const Player = (props) => {
       arrayOfDescriptions[0] = descriptionTextAndIcons;
     let membership = window.crate.metadata.membership ? window.crate.metadata.membership : "";
 
-    if(membership == "premium"){
-      let descriptionElements;
-      descriptionElements = window.crate.metadata.premiumGift && window.crate.metadata.premiumGift > 0 ?
-        <div className="idc-description-gifts">
-          <div className="idc-description-gifts-image">
-            <img src={vinyl}/>
-          </div>
-          <div className="idc-description-gifts-info">
-            <div className="idc-description-title">FREE PREMIUM GIFTS</div>
-            <div className="idc-description-description">Vynil Pad</div>
-            <div className="idc-description-description">{`- $ ${window.crate.metadata.premiumGift} (Low Inventory)`}</div>
-          </div>
-        </div>
-      :
-        null
-      arrayOfDescriptions[1] = descriptionElements;
-    }
+    // if(membership == "premium"){
+    //   let descriptionElements;
+    //   descriptionElements = window.crate.metadata.premiumGift && window.crate.metadata.premiumGift > 0 ?
+    //     <div className="idc-description-gifts">
+    //       <div className="idc-description-gifts-image">
+    //         <img src={vinyl}/>
+    //       </div>
+    //       <div className="idc-description-gifts-info">
+    //         <div className="idc-description-title">FREE PREMIUM GIFTS</div>
+    //         <div className="idc-description-description">Vynil Pad</div>
+    //         <div className="idc-description-description">{`- $ ${window.crate.metadata.premiumGift} (Low Inventory)`}</div>
+    //       </div>
+    //     </div>
+    //   :
+    //     null
+    //   arrayOfDescriptions[1] = descriptionElements;
+    // }
     return arrayOfDescriptions
   }
 
@@ -236,7 +236,7 @@ const Player = (props) => {
               <Headlines 
                   title={ window.crate ? window.crate.metadata.title : ""}
                   price={ initialPrice }
-                  descriptions={ window.crate ? /*headerDescriptions()*/ [] : []}
+                  descriptions={ window.crate ? headerDescriptions() : []}
                   //sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
               />
               <TabNavbar

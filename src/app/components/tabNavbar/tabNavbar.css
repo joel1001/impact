@@ -171,6 +171,12 @@
     letter-spacing: -0.3px;
 }
 @media(max-width: 1265px){
+    .idc-tab-nav .idc-tabs-footer{
+        margin-bottom: 0;
+    }
+    .idc-tab-nav .idc-tabs-footer .idc-product-info{
+        align-self: center;
+    }
     .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-0,
     .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-1,
     .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-2,
@@ -208,5 +214,13 @@
     }
     .idc-tab-nav .idc-tabs-footer .idc-product-info span{
         margin-bottom: 20px;
+    }
+    .idc-tab-nav .idc-tab-cointains{
+        height: max-content;
+    }
+}
+@media (min-width: 140px) and (max-width: 352px) {
+    .idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
+        justify-content: initial;
     }
 }
