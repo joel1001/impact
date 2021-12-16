@@ -40,8 +40,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 95%;
+    width: 75%;
     margin-bottom: 39px;
+    height: 180px;
 }
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
     width: 100%;
@@ -90,6 +91,7 @@
     background-color: #333E48;
     color: #FFF;
     margin-bottom: 10px;
+    
 }
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-0,
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-1,
@@ -103,13 +105,11 @@
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box .idc-tab-overlap-9{
     box-sizing: border-box;
     height: 45px;
-    width: 186px;
     border: 0.5px solid #333E48;
     background-color: #FFFFFF;
     box-shadow: 0 3px 10px 0 rgba(0,0,0,0.29);
     margin-right: 10px;
     margin-bottom: 10px;
-    width: 186px;
     height: 45px;
     color: #545454;
     font-family: "Open Sans";
@@ -120,6 +120,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 10px;
+    width: max-content;
 }
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box.idc-non-color{
     justify-content: initial;

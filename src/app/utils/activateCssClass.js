@@ -45,7 +45,7 @@ function entirePageChangePriceAmount(attribute, value){
         document.querySelector(".idc-product-info").style.display = "flex";
         document.querySelector(".idc-price-addition").innerHTML = "$ " +  (colorPrice + sizePrice) + " extra charge for this " + textPriceAdding + " selection.";
         document.querySelector(".idc-pricing").innerHTML = "$ " + (window.crate.metadata.basePrice + (acumulatedColorPrice + acumulatedSizePrice)).toFixed(2);
-        document.querySelector(".idc-pay-once-price").innerHTML = "$ " + + (window.crate.metadata.basePrice + (acumulatedColorPrice + acumulatedSizePrice)).toFixed(2);
+        //document.querySelector(".idc-pay-once-price").innerHTML = "$ " + + (window.crate.metadata.basePrice + (acumulatedColorPrice + acumulatedSizePrice)).toFixed(2);
     }
     setConfigurations(attribute, value)
 }

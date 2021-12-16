@@ -83,7 +83,7 @@ const Player = (props) => {
     :
     <span className="idc-price-addition"></span>;
     colorDefaultPrice = 
-    [[overPriceText], 
+    [[overPriceText]/*, 
 
     window.crate.metadata.dateToCountDown && timeIsOver > 0 ? 
     <div className="idc-bussines-logic-text">
@@ -92,7 +92,7 @@ const Player = (props) => {
       and your order is
         <span className="idc-green-font">{" Guaranteed "}</span>
       {`to ship in ${window.crate.metadata.shipIn ? window.crate.metadata.shipIn : ""} business days. ALL other colors will ship in ${window.crate.metadata.allOtherShipping ? window.crate.metadata.allOtherShipping : ""} business days.`}
-    </div> : null
+    </div> : null*/
     ]
     return colorDefaultPrice;
   }
@@ -236,8 +236,8 @@ const Player = (props) => {
               <Headlines 
                   title={ window.crate ? window.crate.metadata.title : ""}
                   price={ initialPrice }
-                  descriptions={ window.crate ? headerDescriptions() : []}
-                  sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
+                  descriptions={ window.crate ? /*headerDescriptions()*/ [] : []}
+                  //sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
               />
               <TabNavbar
                   tabHeaders={window.crate ? Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))) : []}
@@ -252,12 +252,12 @@ const Player = (props) => {
                   infoAndDescriptionsPerTab={window.crate ? infoAndDescriptionsPerTab() : ["", ""]}
                   attributes = {["Color", "Size", "Door"]}
               />
-              <Footers
+              {/* <Footers
                 tabDefaultActive={tabDefaultActive}
                 iconsAndServices={createServicesBox()}
                 buttonText={window.crate ? buttonsText(Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))).length) : buttonsText(0)}
                 buttonsDo={window.crate ? buttonsDo(Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))).length) : buttonsDo(0)}
-              />
+              /> */}
             </div>
           :
           <div>

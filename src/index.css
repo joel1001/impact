@@ -54,6 +54,7 @@ span.idc-green-font{
   .idc-threekit-main .idc-content-wrapper .idc-col-2{
     width: 100%;
     margin-top: 180px;
+    position: relative;
   }
   #react-root .idc-main .idc-navbar{
     padding-left: 3%;

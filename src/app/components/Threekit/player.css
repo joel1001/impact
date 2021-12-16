@@ -3,8 +3,10 @@
     height: 530px;
 }
 .idc-threekit-main{
-    padding: 2%;
+    padding: 0 40px;
     height: max-content;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 .idc-threekit-main .idc-content-wrapper{
     position: relative;
@@ -137,10 +139,9 @@
     #player{
         height: 275px;
         position: fixed;
-        left: 2%;
         top: 100px;
         overflow: hidden;
-        width: 96%;
+        width: 93%;
     }
     .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info{
         flex-wrap: wrap;
