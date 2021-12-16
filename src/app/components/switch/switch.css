@@ -1,0 +1,33 @@
+.idc-switch{
+    position: absolute;
+    height: 50px;
+    width: 170px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-evenly;
+}
+.idc-switch .idc-switch-title{
+    margin-bottom: 10px;
+    align-self: center;
+    font-family: 'Bebas Neue';
+    font-size: 18px;
+}
+.idc-switch .idc-switch-bg{
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 6px;
+    height: 50%;
+    cursor: pointer;
+    width: max-content;
+}
+.idc-switch .idc-switch-bg .idc-switch-display{
+    align-self: center;
+    margin-left: 10px;
+}
+.idc-switch .idc-switch-bg .idc-switcher{
+    border-radius: 50%;
+    height: 21px;
+    width: 21px;
+    margin-left: 3px;
+}

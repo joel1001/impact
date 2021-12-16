@@ -8,12 +8,15 @@ import "./player.css";
 import Headlines from "../headLines/headlines";
 import TabNavbar from "../tabNavbar/tabNavbar";
 import Footers from "../footers/footers";
-import { StarFilled, WindowsFilled } from "@ant-design/icons";
+import { StarFilled } from "@ant-design/icons";
 import { classesActiveOrInactive } from "../../utils/activateCssClass";
 import Affirm from "../../../assets/images/affirm.svg";
+import Switch from "../switch/switch";
 import vinyl from "../../../assets/images/vinyl.png";
+import { setConfigurations } from "../../utils/setConfiguration";
 
 const Player = (props) => {
+  let switchInitial = 1;
   const { assetId } = props;
   let tabContentDefaultActive = 0;
   let tabDefaultActive = 0;
@@ -27,7 +30,7 @@ const Player = (props) => {
   function starsQty(){
     let reviewsOfelement = window.crate ? window.crate.metadata.starsQty : 0;
     let starsArray = [<StarFilled/>]
-    let startsCalculation = Math.floor(reviewsOfelement/100)
+    let startsCalculation = Math.floor(reviewsOfelement/1000)
     for(let i = 0; i < 5; i++){
       if(i < (startsCalculation - 1)){
         starsArray.push(<StarFilled/>)
@@ -194,6 +197,13 @@ const Player = (props) => {
     SaveMetadada
   });
 
+  function switchDoor() {
+    const sitchPosibilities = ["Closed Door", "Opened Door"];
+    const doorIs = sitchPosibilities[switchInitial];
+    setConfigurations("Door", doorIs);
+    switchInitial = switchInitial == 0 ? 1 : 0;
+  }
+
   let metadata
   metadata = useSelector(state => state.Metadata.payload);
 
@@ -227,6 +237,7 @@ const Player = (props) => {
   return (
     <div className="idc-threekit-main">
       <div className="idc-content-wrapper">
+      <Switch switchTitle="Doors" clicked={switchDoor} disableText="Closed" enableText="Opened" top="5%" left="5%" disabledColor="#c3c3c3" enableColor="#52c41a" toggleDisableColor="#989898" toggleEnableColor="#43a115"/>
           <div className="idc-col-2 idc-left-col">
             <div id="player">
             </div>

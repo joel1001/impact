@@ -1,3 +1,3 @@
-export function setConfigurations(attribute, value){
-    window.crate.configurator.setConfiguration({[attribute]: value})
+export async function setConfigurations(attribute, value){
+    await window.crate.configurator.setConfiguration({[attribute]: value})
 }
