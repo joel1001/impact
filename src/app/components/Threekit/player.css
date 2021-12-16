@@ -33,31 +33,31 @@
     display: flex;
     justify-content: space-between;
 }
+
+.idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info div {
+    font-family: 'Bebas Neue';
+    font-size: 36px;
+}
 .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info .idc-title{
     margin-bottom: 31px;
-    font-weight: 800;
 }
 .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info .idc-pricing{
-    font-weight: 800;
+    /*font-weight: 800;*/
 }
 .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info .idc-title, .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info .idc-pricing{
     color: #1C1C1C;
-    font-family: "Bebas Neue";
-    font-size: 24px;
+    /*font-size: 24px;*/
     letter-spacing: -0.84px;
     line-height: 46px;
 }
 .idc-stars .anticon svg{
     color: #FFAD48;
-    font-size: 18px;
+    font-size: 25px;
 }
 .idc-stars .idc-reviews {
-    margin-left: 5px;
-    color: #969696;
-    font-family: Arial;
-    font-size: 13px;
-    letter-spacing: -0.1px;
-    line-height: 18px;
+    padding-left: 10px;
+    font-family: 'Bebas Neue';
+    font-size: 22px;
 }
 .idc-stars{
     margin-bottom: 37px;

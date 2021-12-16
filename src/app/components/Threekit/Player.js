@@ -154,13 +154,13 @@ const Player = (props) => {
       <div className="idc-description-and-start">
         <div className='idc-stars'>
          {starsQty()}
-         <span className="idc-reviews">{window.crate.metadata.starsQty ? window.crate.metadata.starsQty + " reviews" : 0}</span> 
+         <span className="idc-reviews">{window.crate.metadata.starsQty ? window.crate.metadata.starsQty + "+ reviews" : 0}</span> 
        </div>
         <div className="idc-description-text">{window.crate.metadata.productDescription ? window.crate.metadata.productDescription : ""}</div>
       </div>
       arrayOfDescriptions[0] = descriptionTextAndIcons;
     let membership = window.crate.metadata.membership ? window.crate.metadata.membership : "";
-
+/*
     if(membership == "premium"){
       let descriptionElements;
       descriptionElements = window.crate.metadata.premiumGift && window.crate.metadata.premiumGift > 0 ?
@@ -177,7 +177,7 @@ const Player = (props) => {
       :
         null
       arrayOfDescriptions[1] = descriptionElements;
-    }
+    }*/
     return arrayOfDescriptions
   }
 
@@ -236,7 +236,7 @@ const Player = (props) => {
               <Headlines 
                   title={ window.crate ? window.crate.metadata.title : ""}
                   price={ initialPrice }
-                  descriptions={ window.crate ? /*headerDescriptions()*/ [] : []}
+                  descriptions={ window.crate ? headerDescriptions() : []}
                   //sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}
               />
               <TabNavbar
@@ -249,15 +249,15 @@ const Player = (props) => {
                   tabColorsNames={window.crate ? Object.values(JSON.parse(window.crate.metadata.colorsName.replace(/\\/g, ""))) : []}
                   tabContentDefaultActive = {tabContentDefaultActive}
                   //tabMosaicImages={[aluminium, blackAluminium, blackPlastic, turquoisePlastic]}
-                  infoAndDescriptionsPerTab={window.crate ? infoAndDescriptionsPerTab() : ["", ""]}
+                  infoAndDescriptionsPerTab={window.crate ? infoAndDescriptionsPerTab(): ["", ""]}
                   attributes = {["Color", "Size", "Door"]}
               />
-              {/* <Footers
+              { <Footers
                 tabDefaultActive={tabDefaultActive}
-                iconsAndServices={createServicesBox()}
+                /*iconsAndServices={createServicesBox()}*/
                 buttonText={window.crate ? buttonsText(Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))).length) : buttonsText(0)}
                 buttonsDo={window.crate ? buttonsDo(Object.values(JSON.parse(window.crate.metadata.tabsArray.replace(/\\/g, ""))).length) : buttonsDo(0)}
-              /> */}
+              /> }
             </div>
           :
           <div>

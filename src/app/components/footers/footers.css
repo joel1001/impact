@@ -53,16 +53,15 @@
     align-content: center;
     align-items: center;
 }
-.idc-footers .idc-primary-buttons .idc-button{
-    width: 193px; 
-    border: 0.5px solid #000;
-    height: 55px;
+.idc-footers .idc-primary-buttons .idc-button {
+    font-family: 'Bebas Neue';
+    font-weight: lighter;
+    letter-spacing: 2px!important;
+    padding: 9px 20px;
+
     background-color: #FFAD48;
-    font-family: "Bebas Neue";
-    font-weight: 400;
     font-style: normal;
-    font-size: 16px;
-    line-height: 12px; 
+    font-size: 18px;
     display: none;
     align-items: center;
     justify-content: center;

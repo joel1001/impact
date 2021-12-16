@@ -19,13 +19,11 @@
     width: 30%;
     height: max-content;
 }
-.idc-tab-nav .idc-tab-headers .idc-tab-nav-content .idc-tab-headers-section{
-    color: #000;
-    font-family: Oswald;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: 18px;
-    font-weight: 500;
+.idc-tab-nav .idc-tab-headers .idc-tab-nav-content .idc-tab-headers-section {
+    font-family: "Bebas Neue";
+    letter-spacing: 2px;
+    font-size: 22px;
+
     height: 45px;
     width: 100%;
     display: flex;
@@ -34,7 +32,9 @@
     cursor: pointer;
 }
 .idc-tab-active{
-    background-color: #9AD1DC;
+    /*background-color: #9AD1DC;*/
+    color: #fff;
+    background-color: #252f38;
 }
 .idc-tab-nav .idc-tab-cointains{
     display: flex;
@@ -42,7 +42,7 @@
     justify-content: space-between;
     width: 75%;
     margin-bottom: 39px;
-    height: 180px;
+    height: 100px;
 }
 .idc-tab-nav .idc-tab-cointains .idc-tab-content-box{
     width: 100%;
@@ -150,6 +150,7 @@
     flex-wrap: wrap;
 }
 .idc-tab-nav .idc-tabs-footer{
+    display: none;
     display: flex;
     flex-direction: column;
     height: 100%;
