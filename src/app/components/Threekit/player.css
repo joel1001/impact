@@ -128,6 +128,7 @@
 }
 
 @media(max-width: 1265px){
+    
     .idc-threekit-main .idc-content-wrapper{
         flex-wrap: wrap;
     }
@@ -146,7 +147,7 @@
     }
     .idc-threekit-main .idc-content-wrapper .idc-right-col .idc-headlines .idc-info{
         flex-wrap: wrap;
-        margin: 25px 0;
+        margin: 85px 0 25px;
     }
     .idc-threekit-main .idc-content-wrapper{
         top: 0;
