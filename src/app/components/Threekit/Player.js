@@ -45,7 +45,7 @@ const Player = (props) => {
     [   
       window.crate.metadata.tabOneContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabOneContent.replace(/\\/g, ""))) : [],  
       window.crate.metadata.tabTwoContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabTwoContent.replace(/\\/g, ""))) : [], 
-      window.crate.metadata.tabThreeContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, ""))) : []
+      //window.crate.metadata.tabThreeContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, ""))) : []
     ]
     return tabsContent
   }
@@ -237,7 +237,10 @@ const Player = (props) => {
   return (
     <div className="idc-threekit-main">
       <div className="idc-content-wrapper">
-      <Switch switchTitle="Doors" clicked={switchDoor} disableText="Closed" enableText="Opened" top="5%" left="5%" disabledColor="#c3c3c3" enableColor="#52c41a" toggleDisableColor="#989898" toggleEnableColor="#43a115"/>
+        { 
+          window.crate && 
+          <Switch switchTitle="Doors" clicked={switchDoor} disableText="Closed" enableText="Opened" top="5%" left="5%" disabledColor="#c3c3c3" enableColor="#52c41a" toggleDisableColor="#989898" toggleEnableColor="#43a115"/>
+        }
           <div className="idc-col-2 idc-left-col">
             <div id="player">
             </div>

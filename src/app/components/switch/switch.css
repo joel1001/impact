@@ -31,3 +31,24 @@
     width: 21px;
     margin-left: 3px;
 }
+@media(max-width: 1265px){
+    .idc-switch{
+        top: 40% !important;
+        left: 0 !important;
+    }
+}
+@media (min-width: 420px) and (max-width: 452px) {
+    .idc-switch{
+        top: 37% !important;
+    }
+}
+@media (min-width: 270px) and (max-width: 419px) {
+    .idc-switch{
+        top: 35% !important;
+    }
+}
+@media (min-width: 140px) and (max-width: 269px) {
+    .idc-switch{
+        top: 33% !important;
+    }
+}
