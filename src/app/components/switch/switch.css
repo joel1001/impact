@@ -20,6 +20,7 @@
     height: 50%;
     cursor: pointer;
     width: max-content;
+    border: 1px solid #d9d9d9;
 }
 .idc-switch .idc-switch-bg .idc-switch-display{
     align-self: center;
@@ -30,6 +31,7 @@
     height: 21px;
     width: 21px;
     margin-left: 3px;
+    align-self: center;
 }
 @media(max-width: 1265px){
     .idc-switch{

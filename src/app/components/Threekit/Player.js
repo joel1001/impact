@@ -8,7 +8,7 @@ import "./player.css";
 import Headlines from "../headLines/headlines";
 import TabNavbar from "../tabNavbar/tabNavbar";
 import Footers from "../footers/footers";
-import { StarFilled } from "@ant-design/icons";
+import { StarFilled, WindowsFilled } from "@ant-design/icons";
 import { classesActiveOrInactive } from "../../utils/activateCssClass";
 import Affirm from "../../../assets/images/affirm.svg";
 import Switch from "../switch/switch";
@@ -16,6 +16,7 @@ import vinyl from "../../../assets/images/vinyl.png";
 import { setConfigurations } from "../../utils/setConfiguration";
 
 const Player = (props) => {
+
   let switchInitial = 1;
   const { assetId } = props;
   let tabContentDefaultActive = 0;
@@ -24,11 +25,19 @@ const Player = (props) => {
   tabContentDefaultActive = tabContentDefaultActive == 0 ? 0 : tabContentDefaultActive - 1;
   tabDefaultActive = tabDefaultActive == 0 ? 0 : tabDefaultActive - 1;
   tabItemsDefaultActive = tabItemsDefaultActive == 0 ? 0 : tabItemsDefaultActive - 1;
+  let colorPricesFromShopify = {};
 
-  const initialPrice = window.crate ? "$ " + (window.crate.metadata.basePrice + parseInt(Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive])).toFixed(2) : ""
+  if( window.shopifyCrates !== undefined){
+    for(let a = 0; a < 5; a++){
+      colorPricesFromShopify[window.shopifyCrates.variants[a].option2 ? window.shopifyCrates.variants[a].option2.split(" +")[0].replace(/\s+/g, "") : "noValue"] = !window.shopifyCrates.variants[a].option2 || isNaN(parseInt(window.shopifyCrates.variants[a].option2.split(" +$")[1])) ? 0 : parseInt(window.shopifyCrates.variants[a].option2.split(" +$")[1]);
+    }
+  }
+
+  const initialPrice = window.shopifyCrates ? "$ " + (window.shopifyCrates.price/100).toFixed(2) : ""
 
   function starsQty(){
-    let reviewsOfelement = window.crate ? window.crate.metadata.starsQty : 0;
+    let reviewsOfelement = window.shopifyCrates ? parseInt(window.shopifyCrates.reviews.replace(/"+ Reviews"/g, "")) * 1000 : 0;
+
     let starsArray = [<StarFilled/>]
     let startsCalculation = Math.floor(reviewsOfelement/1000)
     for(let i = 0; i < 5; i++){
@@ -43,7 +52,7 @@ const Player = (props) => {
     let tabsContent = [];
     tabsContent =  
     [   
-      window.crate.metadata.tabOneContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabOneContent.replace(/\\/g, ""))) : [],  
+      window.crate && window.shopifyCrates !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabOneContent.replace(/\\/g, ""))) : [],  
       window.crate.metadata.tabTwoContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabTwoContent.replace(/\\/g, ""))) : [], 
       //window.crate.metadata.tabThreeContent !== undefined ? Object.values(JSON.parse(window.crate.metadata.tabThreeContent.replace(/\\/g, ""))) : []
     ]
@@ -76,12 +85,12 @@ const Player = (props) => {
       parseInt(Object.values(JSON.parse(window.crate.metadata.sizesPrice.replace(/\\/g, "")))[tabContentDefaultActive]) 
       :
       0;
-    let colorPrices = window.crate.metadata.colorPrices && Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive] !== "0" ? 
-      parseInt(Object.values(JSON.parse(window.crate.metadata.colorPrices.replace(/\\/g, "")))[tabContentDefaultActive]) 
+    let colorPrices = window.crate && window.shopifyCrates && Object.values(colorPricesFromShopify)[tabContentDefaultActive] !== "0" ? 
+      parseInt(Object.values(colorPricesFromShopify)[tabContentDefaultActive]) 
       :
       0;
     let overPriceText = 
-    window.crate.metadata.colorPrices && colorPrices || sizesPrice? 
+    window.crate && window.shopifyCrates && colorPrices || sizesPrice? 
     <span className="idc-price-addition"> {"$ " + (sizesPrice + colorPrices) + " extra charge for this color selection."} </span>
     :
     <span className="idc-price-addition"></span>;
@@ -101,6 +110,13 @@ const Player = (props) => {
   }
 
   function addToCart() {
+    const highAnxietyButton = document.getElementById("AddToCart-6317446854");
+    const collapsibleButton = document.getElementById("AddToCart-4258793488429");
+    const stationaryeButton = document.getElementById("AddToCart-4258963849261");
+    const shopifyAddToCart = highAnxietyButton ? highAnxietyButton : collapsibleButton ? collapsibleButton : stationaryeButton;
+    if(shopifyAddToCart){
+      shopifyAddToCart.click();
+    }
   }
   function allClassesActiveOrInactive (a) {
     classesActiveOrInactive(a, '', '', ".idc-tab-headers-section", "idc-tab-active", " .idc-tab-content-box", "idc-visible-content", ".idc-product-info", "idc-product-info-visible", ".idc-button", "idc-buttons-visible")
@@ -131,56 +147,51 @@ const Player = (props) => {
     return arrayOfFooterButtonsDo;
   }
 
-  function createServicesBox(){
-    return(
-      <div className="idc-services-box">
-        <div className="idc-pay-once">
-          <div className="idc-pay-once-text">
-            PAY ONCE
-          </div>
-          <div className="idc-pay-once-price">
-            {initialPrice}
-          </div>
-        </div>
-        <div className="idc-affirm">
-          <div className="idc-affirm-financings-text">*Starting at $63/MO with</div>
-          <img src={Affirm}/>
-        </div>
-      </div>
-    )    
-  }
+  // function createServicesBox(){
+  //   return(
+  //     <div className="idc-services-box">
+  //       <div className="idc-pay-once">
+  //         <div className="idc-pay-once-text">
+  //           PAY ONCE
+  //         </div>
+  //         <div className="idc-pay-once-price">
+  //           {initialPrice}
+  //         </div>
+  //       </div>
+  //       <div className="idc-affirm">
+  //         <div className="idc-affirm-financings-text">*Starting at $63/MO with</div>
+  //         <img src={Affirm}/>
+  //       </div>
+  //     </div>
+  //   )    
+  // }
 
   function headerDescriptions(){
     let descriptionTextAndIcons;
     let arrayOfDescriptions = [];
+    let descriptionFromShopify = window.shopifyCrates ? window.shopifyCrates.description.replace(/(<([^>]+)>)/ig, "") : "";
+    descriptionFromShopify = window.shopifyCrates ? descriptionFromShopify.replace(/&amp;/g, "") : "";
       descriptionTextAndIcons =
       <div className="idc-description-and-start">
         <div className='idc-stars'>
          {starsQty()}
-         <span className="idc-reviews">{window.crate.metadata.starsQty ? window.crate.metadata.starsQty + "+ reviews" : 0}</span> 
+         <span className="idc-reviews">{window.shopifyCrates ? (parseInt(window.shopifyCrates.reviews.replace(/"+ Reviews"/g, "")) * 1000) + "+ reviews" : 0}</span> 
        </div>
-        <div className="idc-description-text">{window.crate.metadata.productDescription ? window.crate.metadata.productDescription : ""}</div>
+        <div className="idc-description-text">{descriptionFromShopify ? descriptionFromShopify : ""}</div>
       </div>
       arrayOfDescriptions[0] = descriptionTextAndIcons;
     let membership = window.crate.metadata.membership ? window.crate.metadata.membership : "";
-/*
-    if(membership == "premium"){
+
+    if(window.shopifyCrates){
       let descriptionElements;
-      descriptionElements = window.crate.metadata.premiumGift && window.crate.metadata.premiumGift > 0 ?
+      let giftSection = document.querySelector(".gift-section");
+      descriptionElements = 
         <div className="idc-description-gifts">
-          <div className="idc-description-gifts-image">
-            <img src={vinyl}/>
-          </div>
-          <div className="idc-description-gifts-info">
-            <div className="idc-description-title">FREE PREMIUM GIFTS</div>
-            <div className="idc-description-description">Vynil Pad</div>
-            <div className="idc-description-description">{`- $ ${window.crate.metadata.premiumGift} (Low Inventory)`}</div>
-          </div>
+          {/* {giftSection} */}
         </div>
-      :
-        null
       arrayOfDescriptions[1] = descriptionElements;
-    }*/
+
+    }
     return arrayOfDescriptions
   }
 
@@ -239,7 +250,7 @@ const Player = (props) => {
       <div className="idc-content-wrapper">
         { 
           window.crate && 
-          <Switch switchTitle="Doors" clicked={switchDoor} disableText="Closed" enableText="Opened" top="5%" left="5%" disabledColor="#c3c3c3" enableColor="#52c41a" toggleDisableColor="#989898" toggleEnableColor="#43a115"/>
+          <Switch switchTitle="" clicked={switchDoor} disableText="Close" enableText="Open" top="85%" left="20%" disabledColor="#fafafa" enableColor="#52c41a" toggleDisableColor="#d9d9d9" toggleEnableColor="#43a115"/>
         }
           <div className="idc-col-2 idc-left-col">
             <div id="player">
@@ -248,7 +259,7 @@ const Player = (props) => {
           {window.crate ? 
             <div className="idc-col-2 idc-right-col">
               <Headlines 
-                  title={ window.crate ? window.crate.metadata.title : ""}
+                  title={ window.shopifyCrates ? window.shopifyCrates.title : ""}
                   price={ initialPrice }
                   descriptions={ window.crate ? headerDescriptions() : []}
                   //sizesAvailbale={ window.crate ? window.crate.metadata.availabilitySize : ""}

@@ -2,6 +2,7 @@
 html, body, #react-root {
   height: max-content;
   position: relative;
+  margin-bottom: 200px;
 }
 body{
   background-color: rgba(160,160,160,0.45);
